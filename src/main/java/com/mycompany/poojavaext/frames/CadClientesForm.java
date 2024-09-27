@@ -195,6 +195,7 @@ public class CadClientesForm extends javax.swing.JPanel {
         
         Cliente c = new Cliente(conexaoMySQL, jTextField2.getText(), jTextField3.getText(), jTextField4.getText());
         c.setDataNascimento(jTextField5.getText());
+        mainFrame.adicionarCliente(c);
     }//GEN-LAST:event_jButton3MouseClicked
 
 
