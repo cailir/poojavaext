@@ -160,6 +160,7 @@ public class PooJavaExt extends javax.swing.JFrame {
             cliente.save();
         } catch (SQLException ex) {
             System.out.println("Erro ao salvar!");
+            System.out.println(ex);
         }
         clientes.add(cliente);
     }
