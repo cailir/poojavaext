@@ -6,8 +6,11 @@ package com.mycompany.poojavaext.frames;
 
 import com.mycompany.poojavaext.Cliente;
 import com.mycompany.poojavaext.PooJavaExt;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 /**
  *
@@ -36,6 +39,8 @@ public class CadClientesForm extends javax.swing.JPanel {
         this.clientes = clientes;
         
         idEditando = -1;
+        
+        jLabel6.setVisible(false);
     }
 
     
@@ -73,6 +78,7 @@ public class CadClientesForm extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setText("Buscar cliente pelo CPF");
 
@@ -100,6 +106,9 @@ public class CadClientesForm extends javax.swing.JPanel {
                 jButton3MouseClicked(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Operação realizada com sucesso");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,7 +143,9 @@ public class CadClientesForm extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)))
                         .addGap(0, 737, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -170,7 +181,8 @@ public class CadClientesForm extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addContainerGap(516, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -196,6 +208,13 @@ public class CadClientesForm extends javax.swing.JPanel {
         Cliente c = new Cliente(conexaoMySQL, jTextField2.getText(), jTextField3.getText(), jTextField4.getText());
         c.setDataNascimento(jTextField5.getText());
         mainFrame.adicionarCliente(c);
+        
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        
+        jLabel6.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
 
@@ -208,6 +227,7 @@ public class CadClientesForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

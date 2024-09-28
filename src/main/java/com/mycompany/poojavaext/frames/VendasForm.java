@@ -252,7 +252,7 @@ public class VendasForm extends javax.swing.JPanel {
         Produto p = encontrarProduto(Integer.parseInt(jTextField1.getText()));
         
         DefaultListModel<String> list = new DefaultListModel<>();
-        for (int i = 0; i < jList1.getModel().getSize()-1; i++) {
+        for (int i = 0; i < jList1.getModel().getSize(); i++) {
             list.addElement(jList1.getModel().getElementAt(i));
         }
         

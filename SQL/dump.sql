@@ -28,8 +28,10 @@ CREATE TABLE `cliente` (
   `nome` varchar(45) NOT NULL,
   `email` varchar(60) DEFAULT NULL,
   `dataNascimento` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_cliente_cpf` (`cpf`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+SELECT * FROM poojavaext.cliente;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

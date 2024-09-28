@@ -23,10 +23,10 @@ public class ConexaoMySQL {
 
             // Configurando a nossa conexão com um banco de dados
             String serverName = "localhost";    //caminho do servidor do BD
-            String mydatabase = "pooext";        //nome do seu banco de dados
+            String mydatabase = "poojavaext";        //nome do seu banco de dados
             String url = "jdbc:mysql://" + serverName + ":3306/" + mydatabase;
             String username = "root";        //nome de um usuário de seu BD
-            String password = "1234";      //sua senha de acesso
+            String password = "";      //sua senha de acesso
             connection = DriverManager.getConnection(url, username, password);
             
             // Testa a conexão
