@@ -83,24 +83,25 @@ public class Cliente {
     }
     
     public final void save() throws SQLException {
-        String sql = "INSERT INTO produto (cpf, nome, email, dataNascimento) VALUES (?, ?, ?, ?)";
-        
+        String sql = "INSERT INTO cliente (cpf, nome, email, dataNascimento) VALUES (?, ?, ?, ?)";
+
         PreparedStatement preparedStatement = conexaoMySQL.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        
+
         preparedStatement.setString(1, cpf);
         preparedStatement.setString(2, nome);
         preparedStatement.setString(3, email);
         preparedStatement.setString(4, dataNascimento);
-        
-        preparedStatement.executeQuery();
-        
+
+        // Alterado para executeUpdate(), pois é um INSERT
+        preparedStatement.executeUpdate();
+
         int createdId = 0;
         ResultSet rs = preparedStatement.getGeneratedKeys(); 
         if (rs.next()) { 
             createdId = rs.getInt(1);
         } 
         preparedStatement.close();
-        
+
         this.id = createdId;
     }
 }
