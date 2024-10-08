@@ -6,11 +6,9 @@ package com.mycompany.poojavaext.frames;
 
 import com.mycompany.poojavaext.Cliente;
 import com.mycompany.poojavaext.PooJavaExt;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.Timer;
 
 /**
  *
@@ -99,6 +97,11 @@ public class CadClientesForm extends javax.swing.JPanel {
         });
 
         jButton2.setText("Salvar Alterações");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Criar novo cliente");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,6 +219,30 @@ public class CadClientesForm extends javax.swing.JPanel {
         
         jLabel6.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        try {
+            Cliente c = encontrarCliente(jTextField2.getText());
+            if (c == null) {
+                System.out.println("CPF inexistente!");
+            }
+            
+            c.setNome(jTextField3.getText());
+            c.setEmail(jTextField4.getText());
+            c.setDataNascimento(jTextField5.getText());
+            c.update();
+        } catch (SQLException ex) {
+            System.out.println("Erro ao atualizar cliente");
+            return;
+        }
+        
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        
+        jLabel6.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -108,4 +108,21 @@ public class Produto {
         
         this.id = createdId;
     }
+    
+        
+    public final void update() throws SQLException {
+        String sql = "UPDATE produto SET codigo = ?, descricao = ?, valorVenda = ?, quantidadeEstoque = ? WHERE id = ?";
+
+        PreparedStatement preparedStatement = conexaoMySQL.prepareStatement(sql);
+        
+        
+        preparedStatement.setInt(1, codigo);
+        preparedStatement.setString(2, descricao);
+        preparedStatement.setFloat(3, valorVenda);
+        preparedStatement.setInt(4, quantidadeEstoque);
+        preparedStatement.setInt(5, id);
+        
+        // Alterado para executeUpdate(), pois é um INSERT
+        preparedStatement.executeUpdate();
+    }
 }

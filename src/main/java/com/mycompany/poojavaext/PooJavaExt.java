@@ -77,6 +77,7 @@ public class PooJavaExt extends javax.swing.JFrame {
                         rs.getString("nome"),
                         rs.getString("email"));
 
+                c.setDataNascimento(rs.getString("dataNascimento"));
                 clientes.add(c);
             }
         } catch (SQLException ex) {

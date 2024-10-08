@@ -104,4 +104,20 @@ public class Cliente {
 
         this.id = createdId;
     }
+    
+    public final void update() throws SQLException {
+        String sql = "UPDATE cliente SET nome = ?, email = ?, dataNascimento = ? WHERE id = ?";
+
+        PreparedStatement preparedStatement = conexaoMySQL.prepareStatement(sql);
+        
+        
+        preparedStatement.setString(1, nome);
+        preparedStatement.setString(2, email);
+        preparedStatement.setString(3, dataNascimento);
+        preparedStatement.setInt(4, id);
+        
+        
+        // Alterado para executeUpdate(), pois é um INSERT
+        preparedStatement.executeUpdate();
+    }
 }

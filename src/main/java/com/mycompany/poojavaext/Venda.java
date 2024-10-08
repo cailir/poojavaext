@@ -104,4 +104,26 @@ public class Venda {
             preparedStatement.close();
         }
     }
+    
+    public final void update() throws SQLException {
+        String sql;
+        PreparedStatement preparedStatement;
+        
+        if (cliente != null) {
+            sql = "INSERT INTO venda SET cliente = ? WHERE id = ?";
+
+            preparedStatement = conexaoMySQL.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, cliente.getId());
+            preparedStatement.setInt(1, id);
+        } else {
+            sql = "INSERT INTO venda (cliente = NULL) WHERE id = ?";
+
+            preparedStatement = conexaoMySQL.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, id);
+        }
+        
+        preparedStatement.executeUpdate();
+        
+        preparedStatement.close();
+    }
 }
