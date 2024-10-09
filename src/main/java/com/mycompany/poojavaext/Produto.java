@@ -97,7 +97,7 @@ public class Produto {
         preparedStatement.setFloat(3, valorVenda);
         preparedStatement.setInt(4, quantidadeEstoque);
         
-        preparedStatement.executeQuery();
+        preparedStatement.executeUpdate();
         
         int createdId = 0;
         ResultSet rs = preparedStatement.getGeneratedKeys(); 

@@ -5,6 +5,7 @@
 package com.mycompany.poojavaext;
 
 import com.mycompany.poojavaext.frames.CadClientesForm;
+import com.mycompany.poojavaext.frames.ProdutoForm;
 import com.mycompany.poojavaext.frames.VendasForm;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -199,6 +200,11 @@ public class PooJavaExt extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cadastro de Produtos");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -266,6 +272,15 @@ public class PooJavaExt extends javax.swing.JFrame {
         jPanel1.revalidate();
         jPanel1.repaint();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        currentPanel = new ProdutoForm(conexaoMySQL.getConexaoMySQL(), this, produtos);
+        jPanel1.removeAll();
+        currentPanel.setSize(jPanel1.getSize());
+        jPanel1.add(currentPanel);
+        jPanel1.revalidate();
+        jPanel1.repaint();        
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
