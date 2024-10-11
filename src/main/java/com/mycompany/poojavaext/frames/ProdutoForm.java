@@ -7,6 +7,7 @@ package com.mycompany.poojavaext.frames;
 import com.mycompany.poojavaext.Produto;
 import com.mycompany.poojavaext.PooJavaExt;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -138,6 +139,11 @@ public class ProdutoForm extends javax.swing.JPanel implements java.beans.Custom
         jButton2.setBounds(20, 190, 160, 23);
 
         jButton3.setText("Salvar Alterações");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jLayeredPane1.add(jButton3);
         jButton3.setBounds(220, 190, 160, 23);
 
@@ -188,6 +194,34 @@ public class ProdutoForm extends javax.swing.JPanel implements java.beans.Custom
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        codigo = Integer.valueOf(jTextField2.getText());
+        valorvenda = Float.valueOf(jTextField4.getText());
+        quantEstoque = Integer.valueOf(jTextField5.getText());
+        try {
+            Produto c = encontrarProduto(codigo);
+            if (c == null) {
+                System.out.println("Produto inexistente");
+            }
+            
+            c.setValorVenda(valorvenda);
+            c.setQuantidadeEstoque(quantEstoque);
+            c.setDescricao(jTextField3.getText());
+            c.update();
+        } catch (SQLException ex) {
+            System.out.println("Erro ao atualizar cliente");
+            return;
+        }
+        
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        
+        jLabel6.setVisible(true);
+    
+    }//GEN-LAST:event_jButton3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
